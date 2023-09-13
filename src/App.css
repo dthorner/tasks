@@ -23,6 +23,13 @@
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
+    background-color: cadetblue;
+}
+
+.Rectangles {
+    width: 100px;
+    height: 100px;
+    background-color: tomato;
 }
 
 .App-link {
