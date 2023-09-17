@@ -80,7 +80,13 @@ export function countShortWords(words: string[]): number {
  * then return true.
  */
 export function allRGB(colors: string[]): boolean {
-    return false;
+    const c = [...colors];
+    if (c.length == 0) {
+        return true;
+    }
+    return c.every((s: string): boolean => {
+        return s == "red" || s == "blue" || s == "green";
+    });
 }
 
 /**
@@ -91,7 +97,15 @@ export function allRGB(colors: string[]): boolean {
  * And the array [] would become "0=0".
  */
 export function makeMath(addends: number[]): string {
-    return "";
+    const strings = addends.map((n: number): string => {
+        return n.toString();
+    });
+    const total = addends.reduce(
+        (currTotal: number, currVal: number): number => currTotal + currVal,
+        0
+    );
+    const strRep = strings.join("+");
+    return total.toString() + "=" + (strRep == "" ? "0" : strRep);
 }
 
 /**
@@ -104,5 +118,26 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    return [];
+    /* const vals = [...values];
+    const index = vals.findIndex((num: number): boolean => num < 0);
+    const sum = [...vals];
+    sum.splice(index, sum.length - index);
+    const total = sum.reduce(
+        (total: number, curr: number) => (total += curr),
+        0
+    );
+    sum.splice(index, 0, total);
+    */
+    const vals = [...values];
+    const index = vals.findIndex((num: number): boolean => num < 0);
+    if (index == -1) {
+        const t = vals.reduce((tot: number, cur: number) => (tot += cur), 0);
+        vals.push(t);
+        return vals;
+    }
+    const subset = [...vals];
+    subset.splice(index, subset.length - index);
+    const total = subset.reduce((t: number, c: number) => (t += c), 0);
+    vals.splice(index + 1, 0, total);
+    return vals;
 }
