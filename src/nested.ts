@@ -221,7 +221,8 @@ export function changeQuestionTypeById(
  *
  * Remember, if a function starts getting too complicated, think about how a helper function
  * can make it simpler! Break down complicated tasks into little pieces.
- */
+ * 
+ * 
 export function editOption(
     questions: Question[],
     targetId: number,
@@ -230,13 +231,16 @@ export function editOption(
 ): Question[] {
     return [];
 }
+ */
 
 /***
  * Consumes an array of questions, and produces a new array based on the original array.
  * The only difference is that the question with id `targetId` should now be duplicated, with
  * the duplicate inserted directly after the original question. Use the `duplicateQuestion`
  * function you defined previously; the `newId` is the parameter to use for the duplicate's ID.
- */
+ * 
+ * 
+ * 
 export function duplicateQuestionInArray(
     questions: Question[],
     targetId: number,
@@ -244,3 +248,5 @@ export function duplicateQuestionInArray(
 ): Question[] {
     return [];
 }
+
+ */
