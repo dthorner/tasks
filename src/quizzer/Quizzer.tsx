@@ -44,7 +44,7 @@ const INITIAL_QUIZZES = [
 ];
 
 export function Quizzer(): JSX.Element {
-    const [quizzes, setQuizzes] = useState<Quiz[]>(INITIAL_QUIZZES);
+    const [quizzes] = useState<Quiz[]>(INITIAL_QUIZZES); //setQuizzes
     const [selectedQuiz, setSelectedQuiz] = useState<Quiz>();
 
     return (
