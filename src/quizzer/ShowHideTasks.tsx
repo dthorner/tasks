@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-import { ChangeType } from "/Users/devlan/School/2023 Fall/CISC 275/tasks/src/components/ChangeType";
-import { RevealAnswer } from "/Users/devlan/School/2023 Fall/CISC 275/tasks/src/components/RevealAnswer";
-import { StartAttempt } from "/Users/devlan/School/2023 Fall/CISC 275/tasks/src/components/StartAttempt";
-import { TwoDice } from "/Users/devlan/School/2023 Fall/CISC 275/tasks/src/components/TwoDice";
-import { CycleHoliday } from "/Users/devlan/School/2023 Fall/CISC 275/tasks/src/components/CycleHoliday";
-import { Counter } from "/Users/devlan/School/2023 Fall/CISC 275/tasks/src/components/Counter";
-import { DoubleHalf } from "/Users/devlan/School/2023 Fall/CISC 275/tasks/src/bad-components/DoubleHalf";
-import { ColoredBox } from "/Users/devlan/School/2023 Fall/CISC 275/tasks/src/bad-components/ColoredBox";
-import { ShoveBox } from "/Users/devlan/School/2023 Fall/CISC 275/tasks/src/bad-components/ShoveBox";
-import { ChooseTeam } from "/Users/devlan/School/2023 Fall/CISC 275/tasks/src/bad-components/ChooseTeam";
-import { CheckAnswer } from "/Users/devlan/School/2023 Fall/CISC 275/tasks/src/form-components/CheckAnswer";
-import { GiveAttempts } from "/Users/devlan/School/2023 Fall/CISC 275/tasks/src/form-components/GiveAttempts";
-import { EditMode } from "/Users/devlan/School/2023 Fall/CISC 275/tasks/src/form-components/EditMode";
-import { MultipleChoiceQuestion } from "/Users/devlan/School/2023 Fall/CISC 275/tasks/src/form-components/MultipleChoiceQuestion";
-import { ChangeColor } from "/Users/devlan/School/2023 Fall/CISC 275/tasks/src/form-components/ChangeColor";
+import { ChangeType } from "../components/ChangeType";
+import { RevealAnswer } from "../components/RevealAnswer";
+import { StartAttempt } from "../components/StartAttempt";
+import { TwoDice } from "../components/TwoDice";
+import { CycleHoliday } from "../components/CycleHoliday";
+import { Counter } from "../components/Counter";
+import { DoubleHalf } from "../bad-components/DoubleHalf";
+import { ColoredBox } from "../bad-components/ColoredBox";
+import { ShoveBox } from "../bad-components/ShoveBox";
+import { ChooseTeam } from "../bad-components/ChooseTeam";
+import { CheckAnswer } from "../form-components/CheckAnswer";
+import { GiveAttempts } from "../form-components/GiveAttempts";
+import { EditMode } from "../form-components/EditMode";
+import { MultipleChoiceQuestion } from "../form-components/MultipleChoiceQuestion";
+import { ChangeColor } from "../form-components/ChangeColor";
 
 export function ShowHideTasks(): JSX.Element {
     const [visible, setVisible] = useState<boolean>(false);
