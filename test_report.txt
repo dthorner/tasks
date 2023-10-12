@@ -24,11 +24,12 @@ PASS src/components/Counter.test.tsx
 PASS src/components/RevealAnswer.test.tsx
 PASS src/bad-components/ColoredBox.test.tsx
 PASS src/bad-components/ShoveBox.test.tsx
+PASS src/quizzer/Quizzer.test.tsx
 PASS src/App.test.tsx
 -----------------------------|---------|----------|---------|---------|-------------------
 File                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 -----------------------------|---------|----------|---------|---------|-------------------
-All files                    |     100 |    99.01 |     100 |     100 |                   
+All files                    |   98.79 |    91.22 |    97.7 |   98.77 |                   
  src                         |     100 |      100 |     100 |     100 |                   
   App.tsx                    |     100 |      100 |     100 |     100 |                   
   arrays.ts                  |     100 |      100 |     100 |     100 |                   
@@ -56,10 +57,14 @@ All files                    |     100 |    99.01 |     100 |     100 |
  src/interfaces              |       0 |        0 |       0 |       0 |                   
   answer.ts                  |       0 |        0 |       0 |       0 |                   
   question.ts                |       0 |        0 |       0 |       0 |                   
+  quiz.ts                    |       0 |        0 |       0 |       0 |                   
+ src/quizzer                 |      70 |       25 |      50 |      70 |                   
+  Quizzer.tsx                |   71.42 |       20 |      50 |   71.42 | 62,91             
+  ShowHideTasks.tsx          |   66.66 |       50 |      50 |   66.66 | 59                
 -----------------------------|---------|----------|---------|---------|-------------------
 
-Test Suites: 20 passed, 20 total
-Tests:       134 passed, 134 total
+Test Suites: 21 passed, 21 total
+Tests:       135 passed, 135 total
 Snapshots:   0 total
-Time:        14.719 s
+Time:        15.581 s
 Ran all test suites.
