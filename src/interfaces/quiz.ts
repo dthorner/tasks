@@ -1,8 +1,9 @@
 import { Question } from "./question";
 
-/** A representation of a Question in a quizzing application */
 export interface Quiz {
+    id: number;
     title: string;
-    description: string;
-    questions: Question[];
+    body: string;
+    published: boolean;
+    questionList: Question[];
 }
