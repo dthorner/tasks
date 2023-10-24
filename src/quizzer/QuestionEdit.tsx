@@ -35,7 +35,7 @@ export const QuestionEdit = ({
         });
     };
 
-    const switchMulti = () => {
+    /*const switchMulti = () => {
         b(0);
         editQuestion(question.id, {
             ...question,
@@ -43,7 +43,7 @@ export const QuestionEdit = ({
             expected: "Example Answer",
             options: Array(3).fill("Example Answer")
         });
-    };
+    };*/
 
     const handlePoints = (e: React.ChangeEvent<HTMLInputElement>) => {
         question.points = parseInt(e.target.value);
