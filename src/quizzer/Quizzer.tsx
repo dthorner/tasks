@@ -1,103 +1,119 @@
 import React, { useState } from "react";
 import { Quiz } from "../interfaces/quiz";
-import { makeBlankQuestion } from "../objects";
-import { Question } from "../interfaces/question";
+import { Question, QuestionType } from "../interfaces/question";
+import { QuizList } from "./QuizList";
+import { AddQuizModal } from "./AddQuizModal";
 
-const INITIAL_QUIZZES = [
-    {
-        title: "Quiz One",
-        description: "The first quiz in the list",
-        questions: [
-            makeBlankQuestion(
-                1,
-                "Name of the first question",
-                "short_answer_question"
-            ),
-            makeBlankQuestion(
-                2,
-                "Name of the second question",
-                "short_answer_question"
+import "./Quizzer.css";
+import sample from "../data/quizzes.json";
+
+const QUIZZES = sample.map(
+    (quiz): Quiz => ({
+        ...quiz,
+        questionList: quiz.questionList.map(
+            (q): Question => ({
+                ...q,
+                submission: "",
+                type: q.type as QuestionType
+            })
+        )
+    })
+);
+
+export const Quizzer = () => {
+    const [quizzes, setQuizzes] = useState<Quiz[]>(QUIZZES);
+    const [showAddModal, setShowAddModal] = useState<boolean>(false);
+
+    function editQuiz(qId: number, newQuiz: Quiz) {
+        setQuizzes(
+            quizzes.map(
+                (q: Quiz): Quiz => (q.id === qId ? { ...newQuiz } : { ...q })
             )
-        ]
-    },
-    {
-        title: "Quiz Two",
-        description: "The second quiz in the list",
-        questions: [
-            makeBlankQuestion(
-                1,
-                "Name of the first question",
-                "short_answer_question"
-            ),
-            makeBlankQuestion(
-                2,
-                "Name of the second question",
-                "short_answer_question"
-            ),
-            makeBlankQuestion(
-                3,
-                "Name of the third question",
-                "short_answer_question"
-            )
-        ]
+        );
     }
-];
 
-export function Quizzer(): JSX.Element {
-    const [quizzes] = useState<Quiz[]>(INITIAL_QUIZZES); //setQuizzes
-    const [selectedQuiz, setSelectedQuiz] = useState<Quiz>();
+    function addQuiz(title: string, body: string) {
+        setQuizzes([
+            ...quizzes,
+            {
+                id: 0,
+                title: title,
+                body: body,
+                published: true,
+                questionList: []
+            }
+        ]);
+    }
+
+    function deleteQuiz(qId: number) {
+        setQuizzes(quizzes.filter((q: Quiz): boolean => qId !== q.id));
+    }
+
+    const handleShowModal = () => setShowAddModal(true);
+    const handleCloseModal = () => setShowAddModal(false);
 
     return (
-        <div>
-            <h1>Quizzer</h1>
-            <br></br>
-            <h3>
-                {selectedQuiz ? selectedQuiz.title : "Select a quiz to begin"}
-            </h3>
-            {selectedQuiz && (
-                <div>
-                    <ol>
-                        {selectedQuiz.questions.map(
-                            (q: Question): JSX.Element => {
-                                return (
-                                    <li key={q.id}>
-                                        <div>
-                                            <i>
-                                                ({q.points} point
-                                                {q.points > 1 ? "s" : ""}){" "}
-                                            </i>
-                                            <b>{q.name}: </b>
-                                            {q.body ? q.body : "body is empty"}
-                                            <br></br>
-                                            {q.type ===
-                                            "multiple_choice_question"
-                                                ? "MULTIPLE CHOICE OPTIONS GO HERE"
-                                                : "SHORT ANSWER INPUT GOES HERE"}
-                                        </div>
-                                    </li>
-                                );
-                            }
-                        )}
-                    </ol>
-                </div>
-            )}
-            <br></br>
-            <ul>
-                {quizzes.map((quiz: Quiz): JSX.Element => {
-                    return (
-                        <li
-                            key={quiz.title}
-                            onClick={() => {
-                                setSelectedQuiz(quiz);
-                            }}
-                        >
-                            <b>{quiz.title}: </b>
-                            <i>{quiz.description}</i> - {quiz.questions.length}{" "}
-                            Questions
-                        </li>
-                    );
-                })}
-            </ul>
+        <div className="quizzer">
+            <QuizList
+                quizzes={quizzes}
+                editQuiz={editQuiz}
+                deleteQuiz={deleteQuiz}
+                showModal={handleShowModal}
+            ></QuizList>
+            <AddQuizModal
+                show={showAddModal}
+                handleClose={handleCloseModal}
+                addQuiz={addQuiz}
+            ></AddQuizModal>
+            <hr />
+            <h2 style={{ color: "white" }}>Application Sketch</h2>
+            {/* <img src={require("./sketchFINAL.jpg")} /> */}
+            <hr />
+            <div style={{ color: "white" }}>
+                <h2>Completed Features</h2>
+                <ul className="completedList">
+                    <li>
+                        {" "}
+                        Users can see a list of quizzes, including the quizzes
+                        title, description, and how many questions it has
+                        (TESTED)
+                    </li>
+                    <li>
+                        Users can select a specific quiz to see the questions,
+                        including the questions name, body, and points (TESTED)
+                    </li>
+                    <li>
+                        Quiz questions can be of AT LEAST two types: a short
+                        answer question or multiple choice question (TESTED)
+                    </li>
+                    <li>
+                        Users can enter or choose an answer for a quiz question,
+                        and be told if they are correct (TESTED)
+                    </li>
+                    <li>
+                        Users can see how many total points they have earned
+                        (TESTED)
+                    </li>
+                    <li>
+                        Users can clear out their existing answers for a quiz
+                        (TESTED)
+                    </li>
+                    <li>Users can publish or unpublish a question (TESTED)</li>
+                    <li>
+                        Users can filter the questions in a list so that only
+                        published questions are shown (TESTED)
+                    </li>
+                    <li>
+                        Users can edit the questions and fields of a quiz
+                        (TESTED)
+                    </li>
+                    <li>Users can add a new quiz question (TESTED)</li>
+                    <li>Users can delete an existing quiz question (TESTED)</li>
+                    <li>Users can reorder quiz questions (TESTED)</li>
+                    <li>Users can add a new quiz (TESTED)</li>
+                    <li>Users can delete an existing quiz (TESTED)</li>
+                </ul>
+            </div>
         </div>
     );
-}
+};
